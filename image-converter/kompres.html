@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kompres Gambar</title>
+    <!-- Tambahkan tautan ke Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Kompres Gambar</h1>
+        
+        <!-- Input untuk memilih gambar -->
+        <div class="mb-3">
+            <input type="file" class="form-control" accept="image/*" id="imageInput">
+        </div>
+        
+        <!-- Tombol untuk kompres gambar -->
+        <button class="btn btn-primary" onclick="compressImage()">Kompres</button>
+        <hr class="my-4">
+        <!-- Hasil gambar yang telah dikompres -->
+        <h2 class="mt-4">Hasil Kompresi:</h2>
+        <img id="compressedImage" class="img-fluid mt-4">
+        
+        <!-- Tombol untuk unduh gambar -->
+        <button id="downloadButton" class="btn btn-primary my-3" style="display: none">Download</button>
+    </div>
+    
+    <script>
+        async function compressImage() {
+            const imageInput = document.getElementById("imageInput");
+            const format = "image/jpeg"; // Format tetap ke JPEG
+            const compressedImage = document.getElementById("compressedImage");
+            const downloadButton = document.getElementById("downloadButton");
+
+            if (imageInput.files.length > 0) {
+                const file = imageInput.files[0];
+                const originalImage = new Image();
+
+                originalImage.src = URL.createObjectURL(file);
+                originalImage.onload = async () => {
+                    const imageQuality = 0.5; // Kualitas gambar, ubah sesuai kebutuhan
+
+                    const canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+                    const newWidth = originalImage.width;
+                    const newHeight = originalImage.height;
+
+                    canvas.width = newWidth;
+                    canvas.height = newHeight;
+
+                    ctx.drawImage(originalImage, 0, 0, newWidth, newHeight);
+
+                    const compressedDataUrl = canvas.toDataURL(format, imageQuality);
+
+                    compressedImage.src = compressedDataUrl;
+
+                    // Menampilkan tombol unduh dan mengatur tautan unduh
+                    downloadButton.style.display = "block";
+                    downloadButton.onclick = () => {
+                        const a = document.createElement("a");
+                        a.href = compressedDataUrl;
+                        a.download = file.name; // Tetap menggunakan nama asli file
+                        a.style.display = "none";
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    };
+                };
+            }
+        }
+    </script>
+    <!-- Tambahkan tautan ke Bootstrap JavaScript (Popper.js and Bootstrap JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
