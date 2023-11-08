@@ -1,4 +1,4 @@
-# Radio-Web-Html
+# Jaringan Multimedia
 KELOMPOK 8
 - Andika Putra Ariansyah  (1203210019)
 - Dharma Mar'ie Satoto    (1203210050)
