@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Radio streaming app</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col">
+                <div class="radio-title">
+                    IniRadio?
+                </div>
+                <div id="audio-controls">
+                    <div id="controls-left">
+                        <i id="prevChannel" class="fas fa-backward large-icon"></i>
+                        <i id="playPause" class="fas fa-play large-icon"></i>
+                        <i id="nextChannel" class="fas fa-forward large-icon"></i>
+                    </div>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="settings">
+            <i id="settingsIcon" class="fas fa-cog"></i>
+            <div id="settingsMenu" class="settings-menu">
+                <button id="lightMode" class="btn btn-light control-button">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button id="darkMode" class="btn btn-dark control-button">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="genre-container" class="d-flex justify-content-center">
+            <div id="genre-button-radio" class="btn btn-info">
+                Radio
+            </div>
+        </div>
+        <div id="channel-list-radio" class="list-group" style="display: none;">
+            <button class="list-group-item list-group-item-action channel-button" data-src="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service">BBC World Service</button>
+            <button class="list-group-item list-group-item-action channel-button" data-src="http://radioedukasi.kemdikbud.go.id:9000/stream.mp3">Radio Edukasi Kemdikbud</button>
+            <button class="list-group-item list-group-item-action channel-button" data-src="https://stream-ssl.arenastreaming.com:8030/surabaya">Radio Surabaya 100 FM</button>
+            <button class="list-group-item list-group-item-action channel-button" data-src="http://103.30.195.148:8000/medinafmgarut.ogg">Radio Garut 105.3 FM</button>
+        </div>
+        <div id="genre-container" class="d-flex justify-content-center">
+            <div id="genre-button-pop" class="btn btn-info">
+                Pop Music
+            </div>
+        </div>
+        <div id="channel-list-pop" class="list-group" style="display: none;">
+            <button class="list-group-item list-group-item-action channel-button" data-src="http://bogor.nagaswarafm.com:8088/">Nagaswara FM</button>
+            <button class="list-group-item list-group-item-action channel-button" data-src="https://ec2.yesstreaming.net:4260/stream">LoFi</button>
+            <button class="list-group-item list-group-item-action channel-button" data-src="https://ice09.fluidstream.net/movida.mp3">Radio Movida</button>
+        </div>
+        <div id="genre-container" class="d-flex justify-content-center">
+            <div id="genre-button-classic" class="btn btn-info">
+                Classic Music
+            </div>
+        </div>
+        <div id="channel-list-classic" class="list-group" style="display: none;">
+            <button class="list-group-item list-group-item-action channel-button" data-src="http://listen.radionomy.com/ClassicRockRadio">Classic Rock Radio</button>
+            <button class="list-group-item list-group-item-action channel-button" data-src="https://ais-edge114-dal02.cdnstream.com/1825_128">70' Classic</button>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
